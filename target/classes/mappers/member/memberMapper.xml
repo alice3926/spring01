@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+   
+   <select id="list" resultType="com.test.spring01.member.model.dto.MemberDTO">
+ 			select * from member
+   </select>
+    <insert id="insert">
+    	insert into member values(#{id},#{passwd},#{name},#{email},current_timestamp)
+    </insert>
+    <select id="view" resultType="com.test.spring01.member.model.dto.MemberDTO">
+    	select * from member where id = #{id} 
+    	
+    </select>
+    <update id="update">
+    	update member set name=#{name}, email=#{email} where id=#{id} and passwd=#{passwd}
+    </update>
+    <delete id="delete">
+    	delete from member where id=#{id} and passwd=#{passwd}
+    </delete>
+
+	<select id="checkPasswd" resultType="int">
+		select count(*) from member where id = #{id] and passwd = #{passwd}
+	</select>
+
+
+
+</mapper>
